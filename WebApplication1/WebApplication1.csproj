@@ -6,4 +6,17 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Views\Home\Class.cs" />
+    <Compile Remove="Views\Home\creator.cshtml.cs" />
+    <Compile Remove="Views\Home\FileName.cs" />
+    <Compile Remove="Views\Home\Index1.cshtml.cs" />
+    <Compile Remove="Views\Home\Index3.cshtml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Home\Index - Copy.cshtml" />
+    <Content Remove="Views\Home\Index1.cshtml" />
+  </ItemGroup>
+
 </Project>

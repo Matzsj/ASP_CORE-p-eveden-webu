@@ -1,0 +1,58 @@
+@{
+    ViewData["Title"] = "Editor levelù";
+}
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor levelù</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="hlavicka">
+        <nav class="menu">
+            <a asp-controller="Home" asp-action="Index"> Domù </a>
+            <a asp-controller="Home" asp-action="Creator"> Creator </a>
+            <a asp-controller="Home" asp-action="Index2"> Platformer  </a>
+        </nav>
+    </header>
+    
+    <h1 class="nadpis">Editor levelù</h1>
+    <div id="wrapper">
+    <div id="maindiv2">
+        <h2 id="h21">Co to je?</h2>
+        <p>Dùležitou souèástí hry geometry dash je <strong>editor levelù</strong>, který mùže používat
+        každý uživatel se zakoupenou hrou. V editoru levelù se zrodili jedny z nejtìžších ale zároveò 
+        nejzajímavìjších levelù vùbec. Proto abyste ho mohli používat nepotøebujete vùbec nic, pouze nápad
+        a trochu èasu. Potom co level vytvøíte se pøidá do listu vytvoøených levelù a tam si ho mùže každý 
+        uživatel stáhnout a zahrát. Jeho poèáteèní status je "unrated", a první uživatel který ho dohraje 
+        celý ho "ovìøí". Potom co se level ovìøí dostane to info právì RobTop a ten ohodnotí jeho obtížnost
+        právì už ukázanou tabulkou obtížností.</p>
+    </div>
+    
+
+</div>
+<h2 class="nadpis">Oficiální ranking nejtìžších levelù na svìtì </h2>
+<div class="imgbox2">
+    <img src="/obrazky/n1.png" >
+    <img src="/obrazky/n2.png" >
+    <img src="/obrazky/n3.png" >
+    <img src="/obrazky/n4.png" >
+    <img src="/obrazky/n5.png" >
+    <img src="/obrazky/n6.png" >
+    <img src="/obrazky/n7.png" >
+    <img src="/obrazky/n8.png" >
+    <img src="/obrazky/n9.png" >
+    <img src="/obrazky/n10.png" >
+</div>
+
+<div id="bt2">
+<a asp-controller="Home" asp-action="Index"><button>Zpìt</button></a>
+<a asp-controller="Home" asp-action="Index2"><button>Další stránka</button></a>    
+</div>
+
+</div>
+</body>
+</html>

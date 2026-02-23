@@ -1,0 +1,77 @@
+@{
+    ViewData["Title"] = "Platformer";
+}
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platformer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="hlavicka">
+        <nav class="menu">
+            <a asp-controller="Home" asp-action="index"> Domù </a>
+            <a asp-controller="Home" asp-action="creator"> Creator </a>
+            <a asp-controller="Home" asp-action="index2"> Platformer  </a>
+        </nav>
+    </header>
+
+    <h1 class="nadpis">Platformer mod</h1>
+
+    <div id="wrapper">
+        <div id="maindiv2">
+            <h2 id="h21">Co to je?</h2>
+            <p>
+                V Update 2.2 který vyšel v prosinci 2023, pøišel zcela nový Mod
+                <strong>"platformer mod"</strong>, a v èem se liší od klasického režimu?
+                V tomto modu máte možnost ovládat postavièku do smìru doleva a doprava,
+                a narozdíl od klasického modu kde jste byli neustále v pohybu, tady mùžete
+                zastavit a rozhlédnout se kolem sebe...
+            </p>
+
+            <h2 class="nadpis">Top 8 nejlepších hráèù</h2>
+            <table class="tb1">
+                <th>Místo</th>
+                <th>Jméno</th>
+                <th>Místo</th>
+                <th>Jméno</th>
+                <tr>
+                    <td>1.</td>
+                    <td>Zoink</td>
+                    <td>5.</td>
+                    <td>Thnnder</td>
+                </tr>
+                <tr>
+                    <td>2.</td>
+                    <td>wPopoff</td>
+                    <td>6.</td>
+                    <td>zLevii</td>
+                </tr>
+                <tr>
+                    <td>3.</td>
+                    <td>Trick</td>
+                    <td>7.</td>
+                    <td>Vorten</td>
+                </tr>
+                <tr>
+                    <td>4.</td>
+                    <td>Netermind</td>
+                    <td>8.</td>
+                    <td>kloone</td>
+                </tr>
+            </table>
+        </div>
+
+
+    </div>
+    <div id="button1">
+        <a asp-controller="Home" asp-action="Creator"><button>Zpìt</button></a>
+    </div>
+
+
+</body>
+</html>
+

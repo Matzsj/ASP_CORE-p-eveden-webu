@@ -2,7 +2,88 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometry dash</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="hlavicka">
+        <nav class="menu">
+            <a asp-controller="Home" asp-action="Index"> Domů </a>
+            <a asp-controller="Home" asp-action="Creator"> Creator </a>
+            <a asp-controller="Home" asp-action="Index2"> Platformer  </a>
+        </nav>
+    </header>
+
+
+    <h1 class="nadpis">GEOMETRY DASH</h1>
+
+
+
+    <div id="wrapper">
+        <div id="maindiv">
+            <h2 id="h21">Co to je?</h2>
+            <p>
+                Geometry Dash je populární 2D rytmická plošinovka,
+                ve které hráč ovládá malou kostku procházející náročnými
+                překážkovými úrovněmi v rytmu hudby. Cílem je vyhnout se
+                všem pastím skákáním, létáním nebo změnou gravitace.
+                Hra je známá svou rychlou, obtížnou hratelností,
+                jednoduchou grafikou a možností vytvářet a sdílet vlastní levely.
+            </p>
+        </div>
+
+        <div id="div2">
+            <img src="obrazky/logo.jfif" alt="gd logo" width="300">
+            <strong>
+                <p>Datum založení: 13.8. 2013</p>
+                <p id="robtop">Studio: <a href="https://www.robtopgames.com/">RobTop games</a></p>
+                <p>Developer: Robert topala</p>
+                <p>Žánr hry: Rytmická hra</p>
+                <p>Mod: pouze single-player</p>
+                <h3>Platformy:</h3>
+                <ul>
+                    <li>Android, Ios</li>
+                    <li>Windows, MacOS</li>
+                    <li>Windows Phone</li>
+                </ul>
+            </strong>
+        </div>
+    </div>
+    <div id="wrapper2">
+        <div id="div3">
+            <h2>Samotná hra</h2>
+            <p>
+                Hra se skládá z 21 hlavích levlů vytvořených přímo od <strong>RobTop games</strong>, a s kažým levelem
+                se stupňuje obtížnost
+                <ol>
+                    <li>Auto</li>
+                    <li>Easy</li>
+                    <li>Normal</li>
+                    <li>Hard</li>
+                    <li>Harder</li>
+                    <li>Insane</li>
+                    <li>Easy Demon</li>
+                    <li>Medium Demon</li>
+                    <li>Hard Demon</li>
+                    <li>Insane Demon</li>
+                    <li>Extreme Demon</li>
+                </ol>
+            </p>
+        </div>
+        <div class="imgbox">
+            <img src="obrazky/levels.jfif" alt="levels" id="levels">
+            <img src="obrazky/diff.webp" alt="diff" id="diff">
+        </div>
+
+    </div>
+    <div id="button1">
+        <a asp-controller="Home" asp-action="Creator"><button>Další stránka</button></a>
+    </div>
+</body>
+
+</html>
