@@ -10,11 +10,11 @@
     <link rel="stylesheet" href="~/WebApplication1.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
+    <nav class="menu">
         <a asp-controller="Home" asp-action="Index"> Domů </a>
         <a asp-controller="Home" asp-action="Creator"> Creator </a>
         <a asp-controller="Home" asp-action="Index2"> Platformer  </a>
-    </header>
+    </nav>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
