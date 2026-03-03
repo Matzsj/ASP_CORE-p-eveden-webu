@@ -9,16 +9,19 @@ namespace WebApplication1.Controllers
 
         public IActionResult Register()
         {
+            ViewData["Title"] = "Registrace - ";
             return View();
         }
 
         public IActionResult Login()
         {
+            ViewData["Title"] = "Přihlášení - ";
             return View();
         }
 
         public IActionResult Profil()
         {
+            ViewData["Title"] = "Profil - ";
             return View();
         }
 

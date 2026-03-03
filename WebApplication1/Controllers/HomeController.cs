@@ -13,11 +13,13 @@ namespace WebApplication1.Controllers
 
         public IActionResult Creator()
         {
+            ViewData["Title"] = "Creator - ";
             return View();
         }
 
         public IActionResult Index2()
         {
+            ViewData["Title"] = "Platformer - ";
             return View();
         }
 
