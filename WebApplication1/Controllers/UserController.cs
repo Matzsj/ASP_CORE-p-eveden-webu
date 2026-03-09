@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using NuGet.Protocol.Plugins;
 using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
@@ -10,6 +11,27 @@ namespace WebApplication1.Controllers
         public IActionResult Register()
         {
             ViewData["Title"] = "Registrace - ";
+            return View();
+        }
+
+        public IActionResult Register(string fname, string email, string Heslo, string Hesloznovu)
+        {
+            if(fname != "" && Heslo != "" && Hesloznovu != "" && email != "")
+            {
+                if (Heslo == Hesloznovu)
+                {
+                    return Redirect("/User/Login");
+                }
+                else
+                {
+                    ViewData["chyba"] = "Hesla se neshodují.";
+                }
+            }
+            else
+            {
+                ViewData["chyba"] = "Vyplňte všechna pole.";
+            }
+
             return View();
         }
 

@@ -1,14 +1,22 @@
 ﻿<h1 id="h10">Registrace</h1>
 
-<form action="/action_page.php" id="div4">
-    <label for="fname">Username:</label><br>
+@{
+    if(ViewData["chyba"] != null && ViewData["chyba"]!.ToString() != "")
+    {
+        <div class="alert alert-danger">
+            @ViewData["chyba"]
+        </div>
+    }
+}
+
+<form action="/User/Register" method="post" id="div4">
+    <label for="fname" placeholder="Username">Username:</label><br>
     <input type="text" id="fname" name="fname" value=""><br>
     <label for="email">Email:</label><br>
     <input type="email" id="email" name="Email" value=""><br><br>
-    <label for="password">Heslo:</label><br>
+    <label for="password" placeholder="Heslo">Heslo:</label><br>
     <input type="password" id="password" name="Heslo" value=""><br><br>
-    <label for="password">Heslo znovu:</label><br>
-    <input type="password" id="password2" name="Hesloznovu" value=""><br><br>
-
+    <label for="password" placeholder="Heslo znovu">Hesloznovu:</label><br>
+    <input type="password" id="password2" name="Hesloznovu" value=""><br><br>   
     <input type="submit" value="Registrovat">
 </form>
