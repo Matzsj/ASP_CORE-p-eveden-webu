@@ -96,7 +96,19 @@ namespace WebApplication1.Controllers
         public IActionResult Profil()
         {
             ViewData["Title"] = "Profil - ";
-            return View();
+
+            // POZOR: Zatím jen pro test! Vezmeme prvního uživatele z DB
+            // Až přidáme Sessions, budeme zde brát aktuálně přihlášeného
+            var prihlasenyUzivatel = _context.Users.FirstOrDefault(); 
+
+            if(prihlasenyUzivatel == null) 
+            {
+                // Nemáme koho zobrazit, zpět na Login
+                return RedirectToAction("Login");
+            }
+
+            // Předáme uživatele do View
+            return View(prihlasenyUzivatel); 
         }
 
 
