@@ -1,6 +1,13 @@
 ﻿<h1 id="h10">Přihlášení</h1>
 
-<form action="/action_page.php" id="div4">
+@{
+    if (!string.IsNullOrEmpty(ViewData["chyba"]?.ToString()))
+    {
+        <span class="chyba">@ViewData["chyba"]</span>
+    }
+}
+
+<form action="/User/Login" method="post" id="div4">
     <label for="fname">Username:</label><br>
     <input type="text" id="fname" name="fname" value=""><br>
     <label for="password">Heslo:</label><br>

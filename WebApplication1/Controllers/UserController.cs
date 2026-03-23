@@ -56,21 +56,42 @@ namespace WebApplication1.Controllers
         }
 
 
-        [HttpPost]
-        public IActionResult Login(string Username, string Password)
+        [HttpGet]
+        public IActionResult Login()
         {
-            if(string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password))
+            ViewData["Title"] = "Přihlášení - ";
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Login(string fname, string Heslo)
+        {
+            if(string.IsNullOrEmpty(fname) || string.IsNullOrEmpty(Heslo))
             {
                 ViewData["chyba"] = "Vyplňte všechna pole.";
                 return View();
             }
 
-            User? prihlasenyUzivatel = _context.Users.Where(u => u.Username == Username).FirstOrDefault();
+            User? prihlasenyUzivatel = _context.Users.Where(u => u.Username == fname).FirstOrDefault();
 
+            if (prihlasenyUzivatel == null)
+            {
+                ViewData["chyba"] = "Uživatel nenalezen.";
+                return View();
 
-            ViewData["Title"] = "Přihlášení - ";
-            return View();
+            }
+
+            if (prihlasenyUzivatel.Password != Heslo)
+            {
+                ViewData["chyba"] = "Neplatné heslo.";
+                return View();
+
+            }
+            return Redirect("/User/Profil");
         }
+
+
+
 
         public IActionResult Profil()
         {
