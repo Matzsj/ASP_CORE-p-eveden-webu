@@ -1,13 +1,22 @@
-﻿
+﻿@model WebApplication1.Models.User
 
 <h1 id="h10">Váš profil</h1>
 
+
+<p>
+    Jste přihlášeni jako <b>@Model.Username</b>
+</p>
+
+<form action="/User/Logout" method="post">
+    <input type="submit" value="Odhlásit" />
+</form>
+
 <div id="div4">
     <div style="padding: 20px;">
-        
+
         <div style="margin: 15px 0; padding: 10px; background: rgba(0,0,0,0.3); border-radius: 5px;">
             <p style="margin: 5px 0;"><strong>Username:</strong></p>
-            <p style="margin: 5px 0; color: #ccc;"></p>
+            <p style="margin: 5px 0; color: #ccc;">@Model.Username</p>
         </div>  
         
         <div style="margin: 15px 0; padding: 10px; background: rgba(0,0,0,0.3); border-radius: 5px;">

@@ -16,6 +16,15 @@ namespace WebApplication1
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+            // Přidání Session
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -24,6 +33,9 @@ namespace WebApplication1
                 app.UseExceptionHandler("/Home/Error");
             }
             app.UseRouting();
+
+            // Povolit Session
+            app.UseSession();
 
             app.UseAuthorization();
 

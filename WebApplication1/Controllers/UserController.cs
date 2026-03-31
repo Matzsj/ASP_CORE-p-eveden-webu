@@ -30,11 +30,11 @@ namespace WebApplication1.Controllers
             {
                 if (Heslo == Hesloznovu)
                 {
-                    // Uložení uživatele do databáze
+                    // Uložení uživatele do databáze s využitím BCrypt pro hashování hesla
                     var newUser = new User 
                     { 
                         Username = fname,
-                        Password = Heslo // Případně můžete přidat i email, pokud jej přidáte do Models\User.cs
+                        Password = BCrypt.Net.BCrypt.HashPassword(Heslo) 
                     };
 
                     _context.Users.Add(newUser);
@@ -81,12 +81,17 @@ namespace WebApplication1.Controllers
 
             }
 
-            if (prihlasenyUzivatel.Password != Heslo)
+            // Ověření zadaného hesla pomocí BCrypt.Verify
+            if (!BCrypt.Net.BCrypt.Verify(Heslo, prihlasenyUzivatel.Password))
             {
                 ViewData["chyba"] = "Neplatné heslo.";
                 return View();
 
             }
+
+            // ÚSPĚŠNÉ PŘIHLÁŠENÍ -> ULOŽENÍ DO SESSION
+            HttpContext.Session.SetString("PrihlasenyUzivatel", prihlasenyUzivatel.Username);
+
             return Redirect("/User/Profil");
         }
 
@@ -97,20 +102,35 @@ namespace WebApplication1.Controllers
         {
             ViewData["Title"] = "Profil - ";
 
-            // POZOR: Zatím jen pro test! Vezmeme prvního uživatele z DB
-            // Až přidáme Sessions, budeme zde brát aktuálně přihlášeného
-            var prihlasenyUzivatel = _context.Users.FirstOrDefault(); 
+            // Zkusíme najít jméno v Session
+            string? prihlaseneJmeno = HttpContext.Session.GetString("PrihlasenyUzivatel");
 
-            if(prihlasenyUzivatel == null) 
+            // Pokud není žádné jméno v session, uživatel není přihlášen, vyhodíme ho na Login
+            if (string.IsNullOrEmpty(prihlaseneJmeno))
             {
-                // Nemáme koho zobrazit, zpět na Login
-                return RedirectToAction("Login");
+                return Redirect("/User/Login");
             }
 
-            // Předáme uživatele do View
-            return View(prihlasenyUzivatel); 
+            // Najdeme přihlášeného uživatele v databázi, abychom ho mohli předat do HTML
+            User? uzivatelDetail = _context.Users.FirstOrDefault(u => u.Username == prihlaseneJmeno);
+
+            if (uzivatelDetail == null)
+            {
+                return Redirect("/User/Login");
+            }
+
+            // Pošleme objekt uživatele do View(Profil.cshtml)
+            return View(uzivatelDetail);
         }
 
+        [HttpPost]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            Response.Cookies.Delete(".AspNetCore.Session");
+
+            return Redirect("/Home/Index"); // Nebo kamkoliv jinam, třeba i s "/"  nebo "/User/Login"
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
